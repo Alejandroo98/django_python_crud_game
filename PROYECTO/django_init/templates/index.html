@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta charset="utf-8" />
+    <title>Simon Dice</title>
+    <link rel="stylesheet" href="{% static '/juego.css' %}" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+  <body>
+    <div class="table_scores">
+      <table>
+        <thead>
+          <tr>
+            <th>N</th>
+            <th>Nombre</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody class="listaDB">
+          {% for persona in personas %}
+          <tr>
+            <td>-</td>
+            <td>{{ persona.nombre }}</td>
+            <td>{{ persona.puntaje }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="form_contendor">
+      <form method="POST" class="form">
+        {% csrf_token %}
+          <label for="id_nombre">Nickname</label>
+          <input type="text" name="nombre" maxlength="50" required id="id_nombre">
+          <label for="id_puntaje">Puntaje</label>
+          <input type="text" name="puntaje" maxlength="10" id="id_puntaje" required >
+          <button type="submit">Registrar</button>
+      </form>
+    </div>
+    <div class="centrar">
+      <div class="gameboard">
+        <div id="celeste" class="color celeste left" data-color="celeste"></div>
+        <div id="violeta" class="color violeta right" data-color="violeta"></div>
+        <div id="naranja" class="color naranja left" data-color="naranja"></div>
+        <div id="verde" class="color verde right" data-color="verde"></div>
+        <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">
+          Empezar a jugar!
+        </button>
+      </div>
+      <div class="puntajeTotal">
+        <h1>Puntaje : <span class="mostrarPunajeTotal">0</span></h1>
+      </div>
+    </div>
+    <div> {{ form }}
+    </div>
+    <script src="{% static 'juego.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+1. Instalar para poder crear entorno virtual -> pip install virtualenv
+2. Crear el entorno virtual -> virtualenv [nombre_entorno]
+3. Activar el entoro virtual, desde la carpeta scripts ENTORNO/init/Scripts -> activate
+4. Instalar django -> pip install django
+*Para pode ver las dependecias instaladas -> pip freeze
+5. Crear proyecto con Django - Desde la carpeta PROYECTO -> django-admin startproject [nombre_proyecto]
+6. Dentro de la carpeta "aplicaciones" (A esto le llaman modelo vista template) -> django-admin startapp [nombre_app]
+7. Siempre que se haga un cambio en la DB hay que ingrear este comando (Desde la carpeta django_init)  -> python manage.py makemigrations
+*No olvides agregar la direccion de la carpeta "principal" en settings para que funcione el paso 7 -> INSTALLED_APPS = ['aplicaciones.principal']
+8. Ahora si para poder aplicar los cambios en la DB -> python manage.py migrate
+9. Encendar el servidor -> python manage.py runserver
+10. Crear usuario ('alava' - 'jeffersonalejandro27@gmail.com Ladesiempre98')-> python manage.py createsuperuser 
+11. Para agregar templates o vistas no olvides configurarlo o agregar la carpeta en settings -> settings -> TEMPLATE = [ {'DIRS' : ['templates'] } ] 
